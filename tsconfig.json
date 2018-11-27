@@ -16,6 +16,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "account-lib": [
+        "dist/account-lib"
+      ],
+      "account-lib/*": [
+        "dist/account-lib/*"
+      ]
+    }
   }
 }
