@@ -1,0 +1,93 @@
+<div class="card" *ngIf="account">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+  <div class="card-body">
+    <form novalidate (ngSubmit)="saveAccount()" [formGroup]="accountForm">
+      <fieldset>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="accountNameId">Account Name</label>
+
+          <div class="col-md-9">
+            <input [ngClass]="{'is-invalid': displayMessage.name }" class="form-control" id="accountNameId" type="text"
+              placeholder="Name (required)" formControlName="name" (blur)="blur()" />
+            <span class="invalid-feedback" *ngIf="displayMessage.name">
+              {{displayMessage.name}}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="streetId">Street</label>
+
+          <div class="col-md-9">
+            <input [ngClass]="{'is-invalid': displayMessage.street}" class="form-control" id="streetId" type="text"
+              placeholder="Street (required)" formControlName="street" (blur)="blur()" />
+            <span class="invalid-feedback" *ngIf="displayMessage.street">
+              {{displayMessage.street}}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="cityId">City</label>
+
+          <div class="col-md-9">
+            <input [ngClass]="{'is-invalid': displayMessage.city}" class="form-control" id="cityId" type="text"
+              placeholder="City" formControlName="city" />
+            <span class="invalid-feedback" *ngIf="displayMessage.city">
+              {{displayMessage.city}}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="stateId">State</label>
+
+          <div class="col-md-9">
+            <input [ngClass]="{'is-invalid': displayMessage.state}" class="form-control" id="stateId" type="text"
+              placeholder="State" formControlName="state" />
+            <span class="invalid-feedback" *ngIf="displayMessage.state">
+              {{ displayMessage.state}}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="zipCodeId">Zip Code</label>
+
+          <div class="col-md-9">
+            <input [ngClass]="{'is-invalid': displayMessage.zipCode}" class="form-control" id="zipCodeId" type="text"
+              placeholder="Zip Code" formControlName="zipCode" />
+            <span class="invalid-feedback" *ngIf="displayMessage.zipCode">
+              {{ displayMessage.zipCode}}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-10 col-md-offset-2">
+            <span>
+              <button class="btn btn-primary" type="submit" style="width:100px;margin-right:10px" [disabled]="!accountForm.valid || !accountForm.dirty">
+                Save
+              </button>
+            </span>
+            <span>
+              <button class="btn btn-light" type="button" style="width:100px;margin-right:10px" (click)="cancelEdit()">
+                Clear Edit
+              </button>
+            </span>
+            <span>
+              <button class="btn btn-light" type="button" style="width:100px;margin-right:10px" (click)="deleteAccount()">
+                Delete
+              </button>
+            </span>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<div *ngIf="errorMessage" class="alert alert-danger">
+  Error: {{ errorMessage }}
+</div>

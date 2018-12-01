@@ -1,0 +1,20 @@
+<div class='row'>
+  <div class='col-md-4'>
+    <app-account-list
+    [accounts]="accounts$ | async"
+    [selectedAccount]="selectedAccount$ | async"
+	  [errorMessage]="errorMessage$ | async"
+    (initializeNewAccount)="(newAccount())"
+    (selected)="accountSelected($event)"
+    ></app-account-list>
+  </div>
+  <div class='col-md-8'>
+    <app-account-edit
+    [selectedAccount]="selectedAccount$ | async"
+	  [errorMessage]="errorMessage$ | async"
+    (clearCurrent)="clearAccount()"
+    (update)="updateAccount($event)"
+    (delete)="deleteAccount($event)"
+    (create)="saveAccount($event)"></app-account-edit>
+  </div>
+</div>
